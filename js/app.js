@@ -7,6 +7,8 @@ const tshirts = document.querySelector('#tshirt-list'),
 loadEventListeners();
 function loadEventListeners(){
     tshirts.addEventListener('click', buyTshirt);
+
+    shoppingCartContent.addEventListener('click', removeTshirt);
     
 }
 
@@ -56,4 +58,13 @@ function addIntoCart(tshirt){
     `;
     //Add into the Shopping Cart
     shoppingCartContent.appendChild(row);
+}
+
+//Functoin Removing the item from Cart
+function removeTshirt(e){
+    if(e.target.classList.contains('remove'))
+    {
+        e.target.parentElement.parentElement.remove();
+    }
+
 }
