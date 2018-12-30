@@ -1,9 +1,6 @@
 //Variables
 const tshirts = document.querySelector('#tshirt-list'),
-        shoppingCartContent = document.querySelector('cart-content tbody');
-
-
-
+        shoppingCartContent = document.querySelector('#cart-content tbody');
 
 
 //Event Listeners
@@ -46,17 +43,17 @@ function addIntoCart(tshirt){
     const row = document.createElement('tr');
     // Build the template
     row.innerHTML=`
-    <tr>
-            <td>
-                <img src="${tshirt.image}">
-            </td>
-            <td> ${tshirt.title} </td>
-            <td> ${tshirt.price} </td>
-            <td>
-                <a href="#" class ='remove' data-id = "${tshirt.id}"> X</a>
-            </td>
-
-    </tr>
-    `
-
+        <tr>
+                <td>
+                    <img src="${tshirt.image}"  width = 100px>
+                </td>
+                <td> ${tshirt.title} </td>
+                <td> ${tshirt.price} </td>
+                <td>
+                    <a href="#" class='remove' data-id="${tshirt.id}"> X</a>
+                </td>
+        </tr>
+    `;
+    //Add into the Shopping Cart
+    shoppingCartContent.appendChild(row);
 }
