@@ -126,12 +126,35 @@ function getFromLocalStorage(){
 
 //Functoin Removing the item from Cart
 function removeTshirt(e){
+    let tshirt, tshirtId;
     if(e.target.classList.contains('remove'))
     {
         e.target.parentElement.parentElement.remove();
+        tshirt = e.target.parentElement.parentElement;
+        tshirtId = tshirt.querySelector('a').getAttribute('data-id');
     }
 
+    console.log(tshirtId);
+    //Remove also from the local Storage
+    removeTshirtLocalStorage(tshirtId);
 }
+
+//Function removing local storage cart items
+function removeTshirtLocalStorage(id){
+    let tshirtsLS = getTshirtfromStorage();
+
+    //Loop through the array and find the array to remove
+    tshirtsLS.forEach(function(tshirtLS, index){
+            if (tshirtLS.id === id ){
+                tshirtsLS.splice(index, 1);
+            }
+    });
+    //Adding the rest of the array back again in Local storage
+    localStorage.setItem('tshirts', JSON.stringify(tshirtsLS));
+
+}
+
+
 // Clears the shopping cart completely.
 function clearTheCart(){
     shoppingCartContent.innerHTML='';
