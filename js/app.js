@@ -138,5 +138,12 @@ function clearTheCart(){
     /* while(shoppingCartContent.firstChild) {
         shoppingCartContent.removeChild(shoppingCartContent.firstChild);
      } */
+
+     // Clear from Local Storage
+     clearLocalStorage();
 }
 
+// Function clearing local storage cart items
+function clearLocalStorage(){
+    localStorage.clear();
+}
